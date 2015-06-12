@@ -14,6 +14,7 @@
 		DE3515861B2A63300092D9E9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE3515851B2A63300092D9E9 /* Images.xcassets */; };
 		DE3515891B2A63300092D9E9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE3515871B2A63300092D9E9 /* LaunchScreen.xib */; };
 		DE3515951B2A63300092D9E9 /* ShuffleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE3515941B2A63300092D9E9 /* ShuffleTests.m */; };
+		DEC5BA561B2AC52C002E4F40 /* BSShuffler.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC5BA551B2AC52C002E4F40 /* BSShuffler.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,9 @@
 		DE35158E1B2A63300092D9E9 /* ShuffleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShuffleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE3515931B2A63300092D9E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE3515941B2A63300092D9E9 /* ShuffleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShuffleTests.m; sourceTree = "<group>"; };
+		DEC5BA531B2AC489002E4F40 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		DEC5BA541B2AC52C002E4F40 /* BSShuffler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSShuffler.h; sourceTree = "<group>"; };
+		DEC5BA551B2AC52C002E4F40 /* BSShuffler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSShuffler.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,7 @@
 		DE35156C1B2A63300092D9E9 = {
 			isa = PBXGroup;
 			children = (
+				DEC5BA531B2AC489002E4F40 /* README.md */,
 				DE3515771B2A63300092D9E9 /* Shuffle */,
 				DE3515911B2A63300092D9E9 /* ShuffleTests */,
 				DE3515761B2A63300092D9E9 /* Products */,
@@ -83,6 +88,8 @@
 			children = (
 				DE35157C1B2A63300092D9E9 /* AppDelegate.h */,
 				DE35157D1B2A63300092D9E9 /* AppDelegate.m */,
+				DEC5BA541B2AC52C002E4F40 /* BSShuffler.h */,
+				DEC5BA551B2AC52C002E4F40 /* BSShuffler.m */,
 				DE35157F1B2A63300092D9E9 /* ViewController.h */,
 				DE3515801B2A63300092D9E9 /* ViewController.m */,
 				DE3515821B2A63300092D9E9 /* Main.storyboard */,
@@ -222,6 +229,7 @@
 				DE3515811B2A63300092D9E9 /* ViewController.m in Sources */,
 				DE35157E1B2A63300092D9E9 /* AppDelegate.m in Sources */,
 				DE35157B1B2A63300092D9E9 /* main.m in Sources */,
+				DEC5BA561B2AC52C002E4F40 /* BSShuffler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,6 +424,7 @@
 				DE35159A1B2A63300092D9E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DE35159B1B2A63300092D9E9 /* Build configuration list for PBXNativeTarget "ShuffleTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +433,7 @@
 				DE35159D1B2A63300092D9E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
