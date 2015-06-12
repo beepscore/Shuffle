@@ -44,6 +44,7 @@
 		DEC5BA531B2AC489002E4F40 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DEC5BA541B2AC52C002E4F40 /* BSShuffler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSShuffler.h; sourceTree = "<group>"; };
 		DEC5BA551B2AC52C002E4F40 /* BSShuffler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSShuffler.m; sourceTree = "<group>"; };
+		DEF799C61B2ACDD600444C8F /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				DEC5BA531B2AC489002E4F40 /* README.md */,
+				DEF799C61B2ACDD600444C8F /* LICENSE */,
 				DE3515771B2A63300092D9E9 /* Shuffle */,
 				DE3515911B2A63300092D9E9 /* ShuffleTests */,
 				DE3515761B2A63300092D9E9 /* Products */,
