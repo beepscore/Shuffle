@@ -1,19 +1,19 @@
 //
-//  ShuffleTests.m
-//  ShuffleTests
+//  BSNodeTest.m
+//  Shuffle
 //
-//  Created by Steve Baker on 6/11/15.
+//  Created by Steve Baker on 6/16/15.
 //  Copyright (c) 2015 Beepscore LLC. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
-@interface ShuffleTests : XCTestCase
+@interface BSNodeTests : XCTestCase
 
 @end
 
-@implementation ShuffleTests
+@implementation BSNodeTests
 
 - (void)setUp {
     [super setUp];
