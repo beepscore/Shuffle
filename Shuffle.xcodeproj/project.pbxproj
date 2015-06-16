@@ -14,6 +14,7 @@
 		DE3515861B2A63300092D9E9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE3515851B2A63300092D9E9 /* Images.xcassets */; };
 		DE3515891B2A63300092D9E9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE3515871B2A63300092D9E9 /* LaunchScreen.xib */; };
 		DE737C7F1B30D3F80086BCCB /* BSStringUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = DE737C7E1B30D3F80086BCCB /* BSStringUtils.m */; };
+		DE737C811B30D46C0086BCCB /* BSStringUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE737C801B30D46C0086BCCB /* BSStringUtilsTests.m */; };
 		DEC5BA561B2AC52C002E4F40 /* BSShuffler.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC5BA551B2AC52C002E4F40 /* BSShuffler.m */; };
 		DED3DC441B30A51F00766EBF /* BSNode.m in Sources */ = {isa = PBXBuildFile; fileRef = DED3DC431B30A51F00766EBF /* BSNode.m */; };
 		DED3DC461B30A55300766EBF /* BSNodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DED3DC451B30A55300766EBF /* BSNodeTests.m */; };
@@ -44,6 +45,7 @@
 		DE3515931B2A63300092D9E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE737C7D1B30D3F80086BCCB /* BSStringUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSStringUtils.h; sourceTree = "<group>"; };
 		DE737C7E1B30D3F80086BCCB /* BSStringUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSStringUtils.m; sourceTree = "<group>"; };
+		DE737C801B30D46C0086BCCB /* BSStringUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSStringUtilsTests.m; sourceTree = "<group>"; };
 		DEC5BA531B2AC489002E4F40 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DEC5BA541B2AC52C002E4F40 /* BSShuffler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSShuffler.h; sourceTree = "<group>"; };
 		DEC5BA551B2AC52C002E4F40 /* BSShuffler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSShuffler.m; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 			children = (
 				DED3DC451B30A55300766EBF /* BSNodeTests.m */,
 				DE3515921B2A63300092D9E9 /* Supporting Files */,
+				DE737C801B30D46C0086BCCB /* BSStringUtilsTests.m */,
 			);
 			path = ShuffleTests;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DED3DC461B30A55300766EBF /* BSNodeTests.m in Sources */,
+				DE737C811B30D46C0086BCCB /* BSStringUtilsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
