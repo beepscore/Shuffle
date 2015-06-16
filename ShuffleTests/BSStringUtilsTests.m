@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Beepscore LLC. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
+#import "BSStringUtils.h"
 
 @interface BSStringUtilsTests : XCTestCase
 
@@ -25,16 +25,11 @@
     [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    XCTAssert(YES, @"Pass");
-}
+- (void)testIsStringNilOrEmpty {
+    XCTAssertTrue([BSStringUtils isStringNilOrEmpty:nil]);
+    XCTAssertTrue([BSStringUtils isStringNilOrEmpty:@""]);
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+    XCTAssertFalse([BSStringUtils isStringNilOrEmpty:@"B"]);
 }
 
 @end

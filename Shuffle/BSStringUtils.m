@@ -10,4 +10,13 @@
 
 @implementation BSStringUtils
 
++ (BOOL)isStringNilOrEmpty:(NSString *)string {
+    
+    if (!string || string.length == 0) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
 @end
