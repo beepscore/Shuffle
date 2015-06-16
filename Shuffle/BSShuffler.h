@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BSNode.h"
 
 @interface BSShuffler : NSObject
 
@@ -21,7 +22,7 @@
  *                           ofString:@"abc"
  *                         withString:@"def"];
  */
-+(BOOL) isValidShuffle:(NSString *)shuffledString
+-(BOOL) isValidShuffle:(NSString *)shuffledString
               ofString:(NSString *)string0
             withString:(NSString *)string1;
 

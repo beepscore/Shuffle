@@ -7,10 +7,26 @@
 //
 
 #import "BSShuffler.h"
+#import "BSShufflerPrivate.h"
 
 @implementation BSShuffler
 
-+(BOOL) isValidShuffle:(NSString *)shuffledString
+-(BOOL) isNodeValue:(BSNode *)node equalToValue:(NSString *)value {
+
+    if (!value && !node.value) {
+        return true;
+    }
+
+    if (value && node.value
+        && [node.value isEqualToString:value]) {
+        // First two conditionals check both values are non nil.
+        // They are objects and so are safe to compare via isEqualToString
+        return true;
+    }
+    return false;
+}
+
+-(BOOL) isValidShuffle:(NSString *)shuffledString
               ofString:(NSString *)string0
             withString:(NSString *)string1 {
     

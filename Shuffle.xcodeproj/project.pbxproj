@@ -15,6 +15,7 @@
 		DE3515891B2A63300092D9E9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE3515871B2A63300092D9E9 /* LaunchScreen.xib */; };
 		DE737C7F1B30D3F80086BCCB /* BSStringUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = DE737C7E1B30D3F80086BCCB /* BSStringUtils.m */; };
 		DE737C811B30D46C0086BCCB /* BSStringUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE737C801B30D46C0086BCCB /* BSStringUtilsTests.m */; };
+		DE9AE6031B30E34C004AC7B4 /* BSShufflerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9AE6021B30E34C004AC7B4 /* BSShufflerTests.m */; };
 		DEC5BA561B2AC52C002E4F40 /* BSShuffler.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC5BA551B2AC52C002E4F40 /* BSShuffler.m */; };
 		DED3DC441B30A51F00766EBF /* BSNode.m in Sources */ = {isa = PBXBuildFile; fileRef = DED3DC431B30A51F00766EBF /* BSNode.m */; };
 		DED3DC461B30A55300766EBF /* BSNodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DED3DC451B30A55300766EBF /* BSNodeTests.m */; };
@@ -46,6 +47,8 @@
 		DE737C7D1B30D3F80086BCCB /* BSStringUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSStringUtils.h; sourceTree = "<group>"; };
 		DE737C7E1B30D3F80086BCCB /* BSStringUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSStringUtils.m; sourceTree = "<group>"; };
 		DE737C801B30D46C0086BCCB /* BSStringUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSStringUtilsTests.m; sourceTree = "<group>"; };
+		DE9AE6011B30E1B0004AC7B4 /* BSShufflerPrivate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BSShufflerPrivate.h; sourceTree = "<group>"; };
+		DE9AE6021B30E34C004AC7B4 /* BSShufflerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSShufflerTests.m; sourceTree = "<group>"; };
 		DEC5BA531B2AC489002E4F40 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DEC5BA541B2AC52C002E4F40 /* BSShuffler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSShuffler.h; sourceTree = "<group>"; };
 		DEC5BA551B2AC52C002E4F40 /* BSShuffler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSShuffler.m; sourceTree = "<group>"; };
@@ -101,6 +104,7 @@
 				DED3DC421B30A51F00766EBF /* BSNode.h */,
 				DED3DC431B30A51F00766EBF /* BSNode.m */,
 				DEC5BA541B2AC52C002E4F40 /* BSShuffler.h */,
+				DE9AE6011B30E1B0004AC7B4 /* BSShufflerPrivate.h */,
 				DEC5BA551B2AC52C002E4F40 /* BSShuffler.m */,
 				DE737C7D1B30D3F80086BCCB /* BSStringUtils.h */,
 				DE737C7E1B30D3F80086BCCB /* BSStringUtils.m */,
@@ -127,8 +131,9 @@
 			isa = PBXGroup;
 			children = (
 				DED3DC451B30A55300766EBF /* BSNodeTests.m */,
-				DE3515921B2A63300092D9E9 /* Supporting Files */,
+				DE9AE6021B30E34C004AC7B4 /* BSShufflerTests.m */,
 				DE737C801B30D46C0086BCCB /* BSStringUtilsTests.m */,
+				DE3515921B2A63300092D9E9 /* Supporting Files */,
 			);
 			path = ShuffleTests;
 			sourceTree = "<group>";
@@ -255,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DED3DC461B30A55300766EBF /* BSNodeTests.m in Sources */,
+				DE9AE6031B30E34C004AC7B4 /* BSShufflerTests.m in Sources */,
 				DE737C811B30D46C0086BCCB /* BSStringUtilsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
