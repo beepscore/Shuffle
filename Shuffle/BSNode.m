@@ -66,17 +66,17 @@
         index1String = [self.index1 description];
     }
     if (!self.left) {
-        leftString = @"nil";
+        leftString = @"left: nil";
     } else {
-        leftString = self.left.value;
+        leftString = [NSString stringWithFormat:@"left.value: %@", self.left.value];
     }
     if (!self.right) {
-        rightString = @"nil";
+        rightString = @"right: nil";
     } else {
-        rightString = self.right.value;
+        rightString = [NSString stringWithFormat:@"right.value: %@", self.right.value];
     }
 
-    descriptionString = [NSString stringWithFormat:@"%@%@%@%@%@%@left: %@%@right: %@",
+    descriptionString = [NSString stringWithFormat:@"%@%@%@%@%@%@%@%@%@",
                          valueString, SEPARATOR_SPACE,
                          index0String, SEPARATOR_SPACE,
                          index1String, SEPARATOR_SPACE,

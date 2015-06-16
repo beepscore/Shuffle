@@ -44,4 +44,35 @@
     XCTAssertEqualObjects(expected, [node description]);
 }
 
+- (void)testNodeProperties {
+    BSNode *joe = [[BSNode alloc] init];
+    
+    NSString *testValue = @"Joe";
+    joe.value = testValue;
+    XCTAssertEqualObjects(testValue, joe.value);
+    
+    NSString *expectedDescription = @"Joe, nil, nil, left: nil, right: nil";
+    XCTAssertEqualObjects(expectedDescription, [joe description]);
+    
+    BSNode *larry = [[BSNode alloc] init];
+    joe.left = larry;
+    larry.value = @"Larry";
+    XCTAssertEqualObjects(larry, joe.left);
+    
+    expectedDescription = @"Joe, nil, nil, left.value: Larry, right: nil";
+    NSString *actual = [NSString stringWithFormat:@"%@", joe];
+    XCTAssertEqualObjects(expectedDescription, actual);
+    
+    BSNode *rick = [[BSNode alloc] init];
+    joe.right = rick;
+    XCTAssertEqualObjects(rick, joe.right);
+    
+    expectedDescription = @"Joe, nil, nil, left.value: Larry, right.value: (null)";
+    XCTAssertEqualObjects(expectedDescription, [joe description]);
+    
+    rick.value = @"Rick";
+    expectedDescription = @"Joe, nil, nil, left.value: Larry, right.value: Rick";
+    XCTAssertEqualObjects(expectedDescription, [joe description]);
+}
+
 @end
