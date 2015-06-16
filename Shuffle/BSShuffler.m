@@ -19,7 +19,7 @@
     /** An array of binary values indicating source as string0 or string1.  
      *  Maximum array length = m + n  
      */
-    NSArray *sourceStringForIndex = @[];
+    //NSArray *sourceStringForIndex = @[];
 
     // TODO: Fix infinite loop. Change pseudocode to code and test.
 
