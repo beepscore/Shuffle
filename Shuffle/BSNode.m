@@ -40,4 +40,50 @@
                          right:nil];
 }
 
+- (NSString *)description {
+
+    NSString *descriptionString = @"";
+    const NSString *SEPARATOR_SPACE = @", ";
+    NSString *valueString = @"";
+    NSString *index0String = @"";
+    NSString *index1String = @"";
+    NSString *leftString = @"";
+    NSString *rightString = @"";
+
+    if (!self.value) {
+        valueString = @"nil";
+    } else {
+        valueString = self.value;
+    }
+    if (!self.index0) {
+        index0String = @"nil";
+    } else {
+        index0String = [self.index0 description];
+    }
+    if (!self.index1) {
+        index1String = @"nil";
+    } else {
+        index1String = [self.index1 description];
+    }
+    if (!self.left) {
+        leftString = @"nil";
+    } else {
+        leftString = self.left.value;
+    }
+    if (!self.right) {
+        rightString = @"nil";
+    } else {
+        rightString = self.right.value;
+    }
+
+    descriptionString = [NSString stringWithFormat:@"%@%@%@%@%@%@left: %@%@right: %@",
+                         valueString, SEPARATOR_SPACE,
+                         index0String, SEPARATOR_SPACE,
+                         index1String, SEPARATOR_SPACE,
+                         leftString, SEPARATOR_SPACE,
+                         rightString];
+
+    return descriptionString;
+}
+
 @end

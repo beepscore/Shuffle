@@ -38,4 +38,10 @@
     XCTAssertNil(node.right);
 }
 
+- (void)testNodeDescriptionPropertiesNil {
+    BSNode *node = [[BSNode alloc] init];
+    NSString *expected = @"nil, nil, nil, left: nil, right: nil";
+    XCTAssertEqualObjects(expected, [node description]);
+}
+
 @end
