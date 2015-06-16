@@ -9,6 +9,8 @@ ShuffleAndroid by Steve Baker Beepscore LLC
 TreeTraverser by Steve Baker Beepscore LLC  
 <https://github.com/beepscore/TreeTraverser>
 
+XorLinkedList by Steve Baker Beepscore LLC (unpublished) 
+
 Tree Traversal  
 <https://en.wikipedia.org/wiki/Tree_traversal>
 
