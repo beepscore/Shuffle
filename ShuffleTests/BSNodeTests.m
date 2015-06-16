@@ -75,4 +75,30 @@
     XCTAssertEqualObjects(expectedDescription, [joe description]);
 }
 
+- (void)testDesignatedInitializerIndexesNil {
+    NSString *value = @"Joe";
+    BSNode *larry = [[BSNode alloc] init];
+    BSNode *rick = [[BSNode alloc] init];
+    BSNode *joe = [[BSNode alloc] initWithValue:value index0:nil index1:nil left:larry right:rick];
+    
+    XCTAssertNotNil(joe);
+    XCTAssertEqualObjects(value, joe.value);
+    XCTAssertEqualObjects(larry, joe.left);
+    XCTAssertEqualObjects(rick, joe.right);
+}
+
+- (void)testDesignatedInitializer {
+    NSString *value = @"Joe";
+    NSNumber *index0 = @2;
+    BSNode *larry = [[BSNode alloc] init];
+    BSNode *rick = [[BSNode alloc] init];
+    BSNode *joe = [[BSNode alloc] initWithValue:value index0:index0 index1:nil left:larry right:rick];
+    
+    XCTAssertNotNil(joe);
+    XCTAssertEqualObjects(value, joe.value);
+    XCTAssertEqualObjects(index0, joe.index0);
+    XCTAssertEqualObjects(larry, joe.left);
+    XCTAssertEqualObjects(rick, joe.right);
+}
+
 @end
