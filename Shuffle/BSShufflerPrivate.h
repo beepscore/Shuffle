@@ -49,4 +49,15 @@ typedef enum {
                                           string0:(NSString *)string0
                                           string1:(NSString *)string1;
 
+/**
+ *
+ * @param node may not be nil.
+ * @param string0 may be nil or empty @"".
+ * @param string1 may be nil or empty @"".
+ * @return YES if node index0 and index1 are at end of string0 and string1
+ */
+- (BOOL)isLeafNode:(BSNode *)node
+           string0:(NSString *)string0
+           string1:(NSString *)string1;
+
 @end

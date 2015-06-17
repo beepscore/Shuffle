@@ -89,6 +89,42 @@
     return kShuffleValidityUnknown;
 }
 
+- (BOOL)isLeafNode:(BSNode *)node
+           string0:(NSString *)string0
+           string1:(NSString *)string1 {
+
+    if ([BSStringUtils isStringNilOrEmpty:string0]
+        && [BSStringUtils isStringNilOrEmpty:string1]) {
+        return YES;
+    }
+
+    if ([BSStringUtils isStringNilOrEmpty:string0]) {
+        if ([node.index1 integerValue] == string1.length - 1) {
+            return YES;
+        } else {
+            return NO;
+        }
+    }
+
+    if ([BSStringUtils isStringNilOrEmpty:string1]) {
+        if ([node.index0 integerValue] == string0.length - 1) {
+            return YES;
+        } else {
+            return NO;
+        }
+    }
+
+    // string0 and string1 are non-empty
+    
+    if ([self isNode:node index0AtEndOfString:string0]
+        && [self isNode:node index0AtEndOfString:string1]) {
+            return YES;
+        } else {
+            return NO;
+        }
+}
+
+//==========================================================================
 - (BOOL)isValidShuffle:(NSString *)shuffledString
               ofString:(NSString *)string0
             withString:(NSString *)string1 {
