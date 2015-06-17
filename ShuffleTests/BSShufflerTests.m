@@ -233,4 +233,26 @@
                                  withString:@"abc"]);
 }
 
+- (void)testIsValidShuffleSourceStringEmpty {
+    BSShuffler *shuffler = [[BSShuffler alloc] init];
+    
+    XCTAssertEqual(kShuffleValid,
+                   [shuffler isValidShuffle:@""
+                                   ofString:@""
+                                 withString:@""]);
+    XCTAssertEqual(kShuffleValid,
+                   [shuffler isValidShuffle:@"abc"
+                                   ofString:@"abc"
+                                 withString:@""]);
+    XCTAssertEqual(kShuffleValid,
+                   [shuffler isValidShuffle:@"abc"
+                                   ofString:@""
+                                 withString:@"abc"]);
+
+    XCTAssertEqual(kShuffleNotValid,
+                   [shuffler isValidShuffle:@"abc"
+                                   ofString:@""
+                                 withString:@""]);
+}
+
 @end
