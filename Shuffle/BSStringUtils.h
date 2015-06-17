@@ -28,4 +28,13 @@
                          startIndex:(NSInteger)startIndex
                            endIndex:(NSInteger)endIndex;
 
+/** Method is "safe" in that it avoids out of bounds exceptions
+ * @param aString
+ * @param index
+ * @return substring of length one at index.
+ * return empty string "" if aString is null or empty or index is out of range.
+ */
++(NSString *)safeSubstringLengthOne:(NSString *)aString
+                              index:(NSInteger)index;
+
 @end

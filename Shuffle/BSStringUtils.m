@@ -33,4 +33,17 @@
     return substring;
 }
 
+
++(NSString *)safeSubstringLengthOne:(NSString *)aString
+                              index:(NSInteger)index {
+    
+    if ([BSStringUtils isStringNilOrEmpty:aString]
+        || (index < 0)
+        || (index >= aString.length)) {
+        return @"";
+    } else {
+        return [BSStringUtils safeSubstringInclusive:aString startIndex:index endIndex:index];
+    }
+}
+
 @end

@@ -41,4 +41,12 @@
     XCTAssertEqualObjects(@" d", [BSStringUtils safeSubstringInclusive:@"ab d" startIndex:2 endIndex:3]);
 }
 
+- (void) testSafeSubstringLengthOneIndex {
+    XCTAssertEqualObjects(@"a", [BSStringUtils safeSubstringLengthOne:@"a" index:0]);
+    XCTAssertEqualObjects(@"a", [BSStringUtils safeSubstringLengthOne:@"abc" index:0]);
+    XCTAssertEqualObjects(@"b", [BSStringUtils safeSubstringLengthOne:@"abc" index:1]);
+    XCTAssertEqualObjects(@" ", [BSStringUtils safeSubstringLengthOne:@"ab d" index:2]);
+    XCTAssertEqualObjects(@"d", [BSStringUtils safeSubstringLengthOne:@"ab d" index:3]);
+}
+
 @end
