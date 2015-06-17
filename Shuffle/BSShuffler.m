@@ -124,6 +124,19 @@
         }
 }
 
+- (BOOL)isASolution:(BSNode *)node
+     shuffledString:(NSString *)shuffledString
+           ofString:(NSString *)string0
+         withString:(NSString *)string1 {
+
+    if ([self isLeafNode:node string0:string0 string1:string1]
+        && [self isNodeValue:node equalToValue:shuffledString]) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
 //==========================================================================
 - (BOOL)isValidShuffle:(NSString *)shuffledString
               ofString:(NSString *)string0
