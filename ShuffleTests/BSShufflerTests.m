@@ -282,4 +282,30 @@
                                  withString:@"defjkl"]);
 }
 
+- (void)testIsValidShuffleLettersInCommon {
+    BSShuffler *shuffler = [[BSShuffler alloc] init];
+    
+    // string0 and string1 contain letters in common
+    XCTAssertTrue([shuffler isValidShuffle:@"abca"
+                                  ofString:@"ac"
+                                withString:@"ba"]);
+    
+    XCTAssertTrue([shuffler isValidShuffle:@"acbbca"
+                                  ofString:@"abc"
+                                withString:@"cba"]);
+    
+    XCTAssertTrue([shuffler isValidShuffle:@"abaabza"
+                                  ofString:@"aba"
+                                withString:@"abza"]);
+    
+    XCTAssertTrue([shuffler isValidShuffle:@"This is a great day indeed!"
+                                  ofString:@"T reayde"
+                                withString:@"hisis a gt da ined!"]);
+    
+    // expect false because strings are case sensitive
+    XCTAssertFalse([shuffler isValidShuffle:@"This is a great day indeed!"
+                                   ofString:@"t reayde"
+                                 withString:@"hisis a gt da ined!"]);
+}
+
 @end
