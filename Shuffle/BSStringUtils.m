@@ -19,9 +19,14 @@
     }
 }
 
-+(NSString *)safeSubstringInclusive:(NSString *)aString
++ (NSString *)safeSubstringInclusive:(NSString *)aString
                          startIndex:(NSInteger)startIndex
                            endIndex:(NSInteger)endIndex {
+
+    if ([aString isEqualToString:@""]) {
+        return @"";
+    }
+
     NSString *substring = @"";
     if (endIndex >= aString.length - 1) {
         // endIndex is at or past end of aString
@@ -34,7 +39,7 @@
 }
 
 
-+(NSString *)safeSubstringLengthOne:(NSString *)aString
++ (NSString *)safeSubstringLengthOne:(NSString *)aString
                               index:(NSInteger)index {
     
     if ([BSStringUtils isStringNilOrEmpty:aString]
