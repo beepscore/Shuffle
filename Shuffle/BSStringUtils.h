@@ -14,4 +14,18 @@
 
 + (BOOL)isStringNilOrEmpty:(NSString *)string;
 
+/** Method is "safe" in that it avoids out of bounds exceptions
+ * Unlike NSString substringWithRange, range from startIndex to endIndex is inclusive.
+ * @param aString
+ * @param endIndex may be in middle, at end, or past end of aString.
+ * @param startIndex
+ * @return substring from startIndex to endIndex inclusive.
+ *         return substring to endIndex if endIndex >= aString.length
+ */
+// TODO: After app is ported from Java AndroidShuffle, consider refactor/rename
+// to more idiomatic Objective C. For example can change from startIndex, endIndex to an NSRange.
++(NSString *)safeSubstringInclusive:(NSString *)aString
+                         startIndex:(NSInteger)startIndex
+                           endIndex:(NSInteger)endIndex;
+
 @end

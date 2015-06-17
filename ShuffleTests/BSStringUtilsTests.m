@@ -32,4 +32,13 @@
     XCTAssertFalse([BSStringUtils isStringNilOrEmpty:@"B"]);
 }
 
+- (void)testSafeSubstringInclusiveStartIndexEndIndex {
+    XCTAssertEqualObjects(@"a", [BSStringUtils safeSubstringInclusive:@"a" startIndex:0 endIndex:0]);
+    XCTAssertEqualObjects(@"a", [BSStringUtils safeSubstringInclusive:@"a" startIndex:0 endIndex:9]);
+    XCTAssertEqualObjects(@"a", [BSStringUtils safeSubstringInclusive:@"abc" startIndex:0 endIndex:0]);
+    XCTAssertEqualObjects(@"b", [BSStringUtils safeSubstringInclusive:@"abc" startIndex:1 endIndex:1]);
+    XCTAssertEqualObjects(@"ab", [BSStringUtils safeSubstringInclusive:@"abc" startIndex:0 endIndex:1]);
+    XCTAssertEqualObjects(@" d", [BSStringUtils safeSubstringInclusive:@"ab d" startIndex:2 endIndex:3]);
+}
+
 @end
