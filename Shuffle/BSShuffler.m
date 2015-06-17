@@ -29,13 +29,13 @@
 }
 
 - (BOOL)isNode:(BSNode *)node
-         index:(NSNumber *)index
+         index:(NSInteger)index
  atEndOfString:(NSString *)string {
     
     if ([BSStringUtils isStringNilOrEmpty:string]) {
         return YES;
     }
-    if ([index integerValue] == string.length - 1) {
+    if (index == (NSInteger)string.length - 1) {
         return YES;
     } else {
         return NO;
@@ -100,7 +100,7 @@
     }
 
     if ([BSStringUtils isStringNilOrEmpty:string0]) {
-        if ([node.index1 integerValue] == (NSInteger)string1.length - 1) {
+        if (node.index1 == (NSInteger)string1.length - 1) {
             return YES;
         } else {
             return NO;
@@ -108,7 +108,7 @@
     }
 
     if ([BSStringUtils isStringNilOrEmpty:string1]) {
-        if ([node.index0 integerValue] == (NSInteger)string0.length - 1) {
+        if (node.index0 == (NSInteger)string0.length - 1) {
             return YES;
         } else {
             return NO;
@@ -160,7 +160,7 @@
     // this index value signifies node has no letters from that source
     // e.g. if node.index0 == -1, node.value contains no letters from string0
     //const NSInteger INDEX_BEFORE_SOURCE_START = -1;
-    NSNumber *INDEX_BEFORE_SOURCE_START = @-1;
+    NSInteger INDEX_BEFORE_SOURCE_START = -1;
     
     self.nodesSearched = [NSMutableArray arrayWithArray:@[]];
     
@@ -207,13 +207,13 @@
 
             // index0 may be < 0, string.length returns NSUInteger so cast
             if (string0
-                && (node.index0.integerValue < (NSInteger)string0.length)) {
+                && (node.index0 < (NSInteger)string0.length)) {
                 NSString *string0AtIndex = [BSStringUtils
                                             safeSubstringLengthOne:string0
-                                            index:node.index0.integerValue + 1];
+                                            index:node.index0 + 1];
                 NSString *nodeLeftValue = [node.value stringByAppendingString:string0AtIndex];
                 node.left = [[BSNode alloc] initWithValue:nodeLeftValue
-                                                   index0:[NSNumber numberWithInteger:node.index0.integerValue + 1]
+                                                   index0:node.index0 + 1
                                                    index1:node.index1
                                                      left:nil
                                                     right:nil];
@@ -221,14 +221,14 @@
             }
             
             if (string1
-                && (node.index1.integerValue < (NSInteger)string1.length)) {
+                && (node.index1 < (NSInteger)string1.length)) {
                 NSString *string1AtIndex = [BSStringUtils
                                             safeSubstringLengthOne:string1
-                                            index:node.index1.integerValue + 1];
+                                            index:node.index1 + 1];
                 NSString *nodeRightValue = [node.value stringByAppendingString:string1AtIndex];
                 node.right = [[BSNode alloc] initWithValue:nodeRightValue
                                                     index0:node.index0
-                                                    index1:[NSNumber numberWithInteger:node.index1.integerValue + 1]
+                                                    index1:node.index1 + 1
                                                       left:nil
                                                      right:nil];
                 [queue addObject:node.right];

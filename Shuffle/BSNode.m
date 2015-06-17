@@ -13,8 +13,8 @@
 #pragma mark - Initializers
 // designated initializer
 - (instancetype)initWithValue:(NSString *)value
-                       index0:(NSNumber *)index0
-                       index1:(NSNumber *)index1
+                       index0:(NSInteger)index0
+                       index1:(NSInteger)index1
                          left:(BSNode *)left
                         right:(BSNode *)right {
     
@@ -34,8 +34,8 @@
 - (instancetype)init {
     // call designated initializer
     return [self initWithValue:nil
-                        index0:nil
-                        index1:nil
+                        index0:0
+                        index1:0
                           left:nil
                          right:nil];
 }
@@ -55,16 +55,10 @@
     } else {
         valueString = self.value;
     }
-    if (!self.index0) {
-        index0String = @"nil";
-    } else {
-        index0String = [self.index0 description];
-    }
-    if (!self.index1) {
-        index1String = @"nil";
-    } else {
-        index1String = [self.index1 description];
-    }
+
+    index0String = [NSString stringWithFormat:@"%ld", (long)self.index0];
+    index1String = [NSString stringWithFormat:@"%ld", (long)self.index1];
+
     if (!self.left) {
         leftString = @"left: nil";
     } else {
