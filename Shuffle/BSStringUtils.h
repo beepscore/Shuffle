@@ -24,7 +24,7 @@
  */
 // TODO: After app is ported from Java AndroidShuffle, consider refactor/rename
 // to more idiomatic Objective C. For example can change from startIndex, endIndex to an NSRange.
-+(NSString *)safeSubstringInclusive:(NSString *)aString
++ (NSString *)safeSubstringInclusive:(NSString *)aString
                          startIndex:(NSInteger)startIndex
                            endIndex:(NSInteger)endIndex;
 
@@ -34,7 +34,7 @@
  * @return substring of length one at index.
  * return empty string "" if aString is null or empty or index is out of range.
  */
-+(NSString *)safeSubstringLengthOne:(NSString *)aString
++ (NSString *)safeSubstringLengthOne:(NSString *)aString
                               index:(NSInteger)index;
 
 @end
