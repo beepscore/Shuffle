@@ -308,4 +308,17 @@
                                  withString:@"hisis a gt da ined!"]);
 }
 
+- (void)testIsValidShuffleUTF8 {
+    BSShuffler *shuffler = [[BSShuffler alloc] init];
+    
+    // Chinese from http://www.foxconn.com/index.html
+    XCTAssertTrue([shuffler isValidShuffle:@"公告本公司董事會通過104年第一季合併"
+                                  ofString:@"公司會0合"
+                                withString:@"告本公董事通過14年第一季併"]);
+
+    XCTAssertFalse([shuffler isValidShuffle:@"公告本公司董事會通過104年第一季合併"
+                                  ofString:@"公司0合"
+                                withString:@"會告本公董事通過14年第一季併"]);
+}
+
 @end
