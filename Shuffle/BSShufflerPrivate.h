@@ -27,7 +27,7 @@ typedef enum {
 /** Contains values of nodes visited.
  Useful during development for examining traversal history.
  */
-@property (strong, nonatomic) NSArray *nodesSearched;
+@property (strong, nonatomic) NSMutableArray *nodesSearched;
 
 - (BOOL)isNodeValue:(BSNode *)node equalToValue:(NSString *)value;
 

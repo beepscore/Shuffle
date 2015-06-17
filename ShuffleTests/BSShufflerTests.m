@@ -60,6 +60,17 @@
     XCTAssertTrue([shuffler isNode:node index1AtEndOfString:@"abcd"]);
 }
 
+- (void)testIsLeafNode {
+    BSShuffler *shuffler = [[BSShuffler alloc] init];
+    BSNode *node = [[BSNode alloc] initWithValue:@"a"
+                                          index0:@0
+                                          index1:[NSNumber numberWithInteger:-1]
+                                            left:nil
+                                           right:nil];
+    XCTAssertFalse([shuffler isLeafNode:node
+                                string0:@"a" string1:@"b"]);
+}
+
 //==========================================================================
 #pragma mark - testIsValidShuffleForEdgeCases
 
@@ -251,17 +262,12 @@
                                  withString:@""]);
 }
 
-/*
 - (void)testIsValidShuffle {
     BSShuffler *shuffler = [[BSShuffler alloc] init];
     
     XCTAssertTrue([shuffler isValidShuffle:@"ab"
                                    ofString:@"a"
                                  withString:@"b"]);
-
-    XCTAssertTrue([shuffler isValidShuffle:@"ab"
-                                  ofString:@"a"
-                                withString:@"b"]);
 
     XCTAssertTrue([shuffler isValidShuffle:@"dabecf"
                                   ofString:@"abc"
@@ -275,6 +281,5 @@
                                    ofString:@"abchgi"
                                  withString:@"defjkl"]);
 }
- */
 
 @end

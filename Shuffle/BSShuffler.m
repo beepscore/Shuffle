@@ -9,6 +9,7 @@
 #import "BSShuffler.h"
 #import "BSShufflerPrivate.h"
 #import "BSStringUtils.h"
+#import "BSNode.h"
 
 @implementation BSShuffler
 
@@ -99,7 +100,7 @@
     }
 
     if ([BSStringUtils isStringNilOrEmpty:string0]) {
-        if ([node.index1 integerValue] == string1.length - 1) {
+        if ([node.index1 integerValue] == (NSInteger)string1.length - 1) {
             return YES;
         } else {
             return NO;
@@ -107,7 +108,7 @@
     }
 
     if ([BSStringUtils isStringNilOrEmpty:string1]) {
-        if ([node.index0 integerValue] == string0.length - 1) {
+        if ([node.index0 integerValue] == (NSInteger)string0.length - 1) {
             return YES;
         } else {
             return NO;
@@ -117,7 +118,7 @@
     // string0 and string1 are non-empty
     
     if ([self isNode:node index0AtEndOfString:string0]
-        && [self isNode:node index0AtEndOfString:string1]) {
+        && [self isNode:node index1AtEndOfString:string1]) {
             return YES;
         } else {
             return NO;
@@ -141,7 +142,7 @@
 - (BOOL)isValidShuffle:(NSString *)shuffledString
               ofString:(NSString *)string0
             withString:(NSString *)string1 {
-
+    
     BSShuffleValidityCode shuffleValidityCode = [self isValidShuffleForEdgeCases:shuffledString
                                                                          string0:string0
                                                                          string1:string1];
@@ -152,8 +153,90 @@
         return YES;
     }
     // else isValidShuffleForEdgeCases:string0:string1 could not determine if shuffle is valid
+    
+    // TODO: Consider create queue class that wraps NSMutableArray to implement strict queue
+    NSMutableArray *queue = [NSMutableArray arrayWithArray:@[]];
+    
+    // this index value signifies node has no letters from that source
+    // e.g. if node.index0 == -1, node.value contains no letters from string0
+    //const NSInteger INDEX_BEFORE_SOURCE_START = -1;
+    NSNumber *INDEX_BEFORE_SOURCE_START = @-1;
+    
+    self.nodesSearched = [NSMutableArray arrayWithArray:@[]];
+    
+    // root node has empty value and no letters from either source string
+    BSNode *root = [[BSNode alloc] initWithValue:@""
+                                          index0:INDEX_BEFORE_SOURCE_START
+                                          index1:INDEX_BEFORE_SOURCE_START
+                                            left:nil
+                                           right:nil];
+    // add to end of queue
+    [queue addObject:root];
+    
+    while (queue.count > 0) {
+        
+        // remove from beginning of queue
+        BSNode *node = [queue firstObject];
+        [queue removeObjectAtIndex:0];
+        
+        [self.nodesSearched addObject:node.value];
+        
+        if ([self isLeafNode:node string0:string0 string1:string1]) {
+            if ([self isASolution:node
+                   shuffledString:shuffledString
+                         ofString:string0
+                       withString:string1]) {
+                return YES;
+            } else {
+                // skip to next iteration
+                continue;
+            }
+        }
 
-    // TODO: add implementation for other cases
+        NSString *shuffledStringStart = nil;
+        if ([self isNodeValue:node equalToValue:@""]) {
+            shuffledStringStart = @"";
+        } else {
+            shuffledStringStart = [BSStringUtils safeSubstringInclusive:shuffledString
+                                                             startIndex:0
+                                                               endIndex:node.value.length - 1];
+        }
+
+        if ([self isNodeValue:node equalToValue:shuffledStringStart]){
+            // candidate is potentially valid
+
+            // index0 may be < 0, string.length returns NSUInteger so cast
+            if (string0
+                && (node.index0.integerValue < (NSInteger)string0.length)) {
+                NSString *string0AtIndex = [BSStringUtils
+                                            safeSubstringLengthOne:string0
+                                            index:node.index0.integerValue + 1];
+                NSString *nodeLeftValue = [node.value stringByAppendingString:string0AtIndex];
+                node.left = [[BSNode alloc] initWithValue:nodeLeftValue
+                                                   index0:[NSNumber numberWithInteger:node.index0.integerValue + 1]
+                                                   index1:node.index1
+                                                     left:nil
+                                                    right:nil];
+                [queue addObject:node.left];
+            }
+            
+            if (string1
+                && (node.index1.integerValue < (NSInteger)string1.length)) {
+                NSString *string1AtIndex = [BSStringUtils
+                                            safeSubstringLengthOne:string1
+                                            index:node.index1.integerValue + 1];
+                NSString *nodeRightValue = [node.value stringByAppendingString:string1AtIndex];
+                node.right = [[BSNode alloc] initWithValue:nodeRightValue
+                                                    index0:node.index0
+                                                    index1:[NSNumber numberWithInteger:node.index1.integerValue + 1]
+                                                      left:nil
+                                                     right:nil];
+                [queue addObject:node.right];
+            }
+        }
+    }
+    
+    // didn't find a solution
     return NO;
 }
 
