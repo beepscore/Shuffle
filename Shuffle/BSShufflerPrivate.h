@@ -25,4 +25,8 @@
 
 -(BOOL) isNodeValue:(BSNode *)node equalToValue:(NSString *)value;
 
+-(BOOL) isNode:(BSNode *)node index0AtEndOfString:(NSString *)string;
+
+-(BOOL) isNode:(BSNode *)node index1AtEndOfString:(NSString *)string;
+
 @end

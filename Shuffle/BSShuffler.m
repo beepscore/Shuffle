@@ -8,6 +8,7 @@
 
 #import "BSShuffler.h"
 #import "BSShufflerPrivate.h"
+#import "BSStringUtils.h"
 
 @implementation BSShuffler
 
@@ -24,6 +25,26 @@
         return true;
     }
     return false;
+}
+
+-(BOOL) isNode:(BSNode *)node index:(NSNumber *)index atEndOfString:(NSString *)string {
+    
+    if ([BSStringUtils isStringNilOrEmpty:string]) {
+        return YES;
+    }
+    if ([index integerValue] == string.length - 1) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+-(BOOL) isNode:(BSNode *)node index0AtEndOfString:(NSString *)string {
+    return [self isNode:node index:node.index0 atEndOfString:string];
+}
+
+-(BOOL) isNode:(BSNode *)node index1AtEndOfString:(NSString *)string {
+    return [self isNode:node index:node.index1 atEndOfString:string];
 }
 
 -(BOOL) isValidShuffle:(NSString *)shuffledString
