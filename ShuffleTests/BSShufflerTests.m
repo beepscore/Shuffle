@@ -142,5 +142,26 @@
                                                 string1:@"ab"]);
 }
 
+- (void)testIsValidShuffleForEdgeCasesSourceStringEmpty {
+    BSShuffler *shuffler = [[BSShuffler alloc] init];
+    
+    XCTAssertEqual(kShuffleValid,
+                   [shuffler isValidShuffleForEdgeCases:@""
+                                                string0:@""
+                                                string1:@""]);
+    XCTAssertEqual(kShuffleValid,
+                   [shuffler isValidShuffleForEdgeCases:@"abc"
+                                                string0:@"abc"
+                                                string1:@""]);
+    XCTAssertEqual(kShuffleValid,
+                   [shuffler isValidShuffleForEdgeCases:@"abc"
+                                                string0:@""
+                                                string1:@"abc"]);
+    XCTAssertEqual(kShuffleNotValid,
+                   [shuffler isValidShuffleForEdgeCases:@"abc"
+                                                string0:@""
+                                                string1:@""]);
+}
+
 
 @end
