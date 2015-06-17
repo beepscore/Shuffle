@@ -164,5 +164,27 @@
                                                 string1:@""]);
 }
 
+//==========================================================================
+#pragma mark - testIsValidShuffle
+
+/*
+- (void)testIsValidShuffleShuffledStringNil {
+    BSShuffler *shuffler = [[BSShuffler alloc] init];
+    
+    XCTAssertTrue([shuffler isValidShuffle:nil
+                                  ofString:nil
+                                withString:nil]);
+    
+    XCTAssertFalse([shuffler isValidShuffle:nil
+                                  ofString:@"a"
+                                withString:nil]);
+    XCTAssertFalse([shuffler isValidShuffle:nil
+                                   ofString:nil
+                                 withString:@"b"]);
+    XCTAssertFalse([shuffler isValidShuffle:nil
+                                   ofString:@"a"
+                                 withString:@"b"]);
+}
+ */
 
 @end
