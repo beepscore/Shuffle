@@ -61,6 +61,7 @@
 }
 
 //==========================================================================
+#pragma mark - testIsValidShuffleForEdgeCases
 
 - (void)testIsValidShuffleForEdgeCasesShuffledStringNil {
     BSShuffler *shuffler = [[BSShuffler alloc] init];
