@@ -23,10 +23,6 @@
                          startIndex:(NSInteger)startIndex
                            endIndex:(NSInteger)endIndex {
 
-    if ([aString isEqualToString:@""]) {
-        return @"";
-    }
-
     NSString *substring = @"";
     if (endIndex >= aString.length - 1) {
         // endIndex is at or past end of aString
