@@ -12,7 +12,7 @@
 
 @implementation BSShuffler
 
--(BOOL) isNodeValue:(BSNode *)node equalToValue:(NSString *)value {
+- (BOOL)isNodeValue:(BSNode *)node equalToValue:(NSString *)value {
 
     if (!value && !node.value) {
         return true;
@@ -27,7 +27,9 @@
     return false;
 }
 
--(BOOL) isNode:(BSNode *)node index:(NSNumber *)index atEndOfString:(NSString *)string {
+- (BOOL)isNode:(BSNode *)node
+         index:(NSNumber *)index
+ atEndOfString:(NSString *)string {
     
     if ([BSStringUtils isStringNilOrEmpty:string]) {
         return YES;
@@ -39,15 +41,55 @@
     }
 }
 
--(BOOL) isNode:(BSNode *)node index0AtEndOfString:(NSString *)string {
+- (BOOL)isNode:(BSNode *)node index0AtEndOfString:(NSString *)string {
     return [self isNode:node index:node.index0 atEndOfString:string];
 }
 
--(BOOL) isNode:(BSNode *)node index1AtEndOfString:(NSString *)string {
+- (BOOL)isNode:(BSNode *)node index1AtEndOfString:(NSString *)string {
     return [self isNode:node index:node.index1 atEndOfString:string];
 }
 
--(BOOL) isValidShuffle:(NSString *)shuffledString
+//==========================================================================
+
+- (ShuffleValidityCode)isValidShuffleForEdgeCases:(NSString *)shuffledString
+                           string0:(NSString *)string0
+                           string1:(NSString *)string1 {
+
+    if (!shuffledString) {
+        if (!string0 && !string1) {
+            return kShuffleValid;
+        } else {
+            return kShuffleNotValid;
+        }
+    }
+
+    if ([@"" isEqualToString:shuffledString]) {
+        if ([@"" isEqualToString:string0] && [@"" isEqualToString:string1]) {
+            return kShuffleValid;
+        } else {
+            return kShuffleNotValid;
+        }
+    }
+
+    if (shuffledString
+        && [BSStringUtils isStringNilOrEmpty:string0]
+        && [BSStringUtils isStringNilOrEmpty:string1]) {
+        return kShuffleNotValid;
+    }
+    
+    if ([BSStringUtils isStringNilOrEmpty:string0]
+        && [shuffledString isEqualToString:string1]) {
+        return kShuffleValid;
+    }
+    
+    if ([BSStringUtils isStringNilOrEmpty:string1]
+        && [shuffledString isEqualToString:string0]) {
+        return kShuffleValid;
+    }
+    return kShuffleValidityUnknown;
+}
+
+- (BOOL)isValidShuffle:(NSString *)shuffledString
               ofString:(NSString *)string0
             withString:(NSString *)string1 {
     

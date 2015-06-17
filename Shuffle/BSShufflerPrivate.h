@@ -18,15 +18,35 @@
 
 @interface BSShuffler()
 
+typedef enum {
+    kShuffleValidityUnknown = -1,
+    kShuffleNotValid = 0,
+    kShuffleValid = 1,
+} ShuffleValidityCode;
+
 /** Contains values of nodes visited.
  Useful during development for examining traversal history.
  */
 @property (strong, nonatomic) NSArray *nodesSearched;
 
--(BOOL) isNodeValue:(BSNode *)node equalToValue:(NSString *)value;
+- (BOOL)isNodeValue:(BSNode *)node equalToValue:(NSString *)value;
 
--(BOOL) isNode:(BSNode *)node index0AtEndOfString:(NSString *)string;
+- (BOOL)isNode:(BSNode *)node index0AtEndOfString:(NSString *)string;
 
--(BOOL) isNode:(BSNode *)node index1AtEndOfString:(NSString *)string;
+- (BOOL)isNode:(BSNode *)node index1AtEndOfString:(NSString *)string;
+
+/**
+ * Checks several edge cases such as arguments null or empty strings
+ * Returns ShuffleValidityCode instead of boolean (true, false)
+ * @param shuffledString
+ * @param string0
+ * @param string1
+ * @return kShuffleValid if shuffledString is a valid shuffle of string0 and string1.
+ * return kShuffleNotValid if shuffledString is not a valid shuffle of string0 and string1.
+ * return kShuffleValidityUnknown if method can't tell if shuffledString is a valid shuffle of string0 and string1.
+ */
+- (ShuffleValidityCode)isValidShuffleForEdgeCases:(NSString *)shuffledString
+                                          string0:(NSString *)string0
+                                          string1:(NSString *)string1;
 
 @end

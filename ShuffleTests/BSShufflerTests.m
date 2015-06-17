@@ -60,4 +60,30 @@
     XCTAssertTrue([shuffler isNode:node index1AtEndOfString:@"abcd"]);
 }
 
+//==========================================================================
+
+- (void)testIsValidShuffleForEdgeCasesShuffledStringNil {
+    BSShuffler *shuffler = [[BSShuffler alloc] init];
+    
+    XCTAssertEqual(kShuffleValid,
+                   [shuffler isValidShuffleForEdgeCases:nil
+                                                string0:nil
+                                                string1:nil]);
+    
+    XCTAssertEqual(kShuffleNotValid,
+                   [shuffler isValidShuffleForEdgeCases:nil
+                                                string0:@"a"
+                                                string1:nil]);
+    
+    XCTAssertEqual(kShuffleNotValid,
+                   [shuffler isValidShuffleForEdgeCases:nil
+                                                string0:nil
+                                                string1:@"b"]);
+    
+    XCTAssertEqual(kShuffleNotValid,
+                   [shuffler isValidShuffleForEdgeCases:nil
+                                                string0:@"a"
+                                                string1:@"b"]);
+}
+
 @end
