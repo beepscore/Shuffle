@@ -236,23 +236,45 @@
 - (void)testIsValidShuffleSourceStringEmpty {
     BSShuffler *shuffler = [[BSShuffler alloc] init];
     
-    XCTAssertEqual(kShuffleValid,
-                   [shuffler isValidShuffle:@""
-                                   ofString:@""
-                                 withString:@""]);
-    XCTAssertEqual(kShuffleValid,
-                   [shuffler isValidShuffle:@"abc"
-                                   ofString:@"abc"
-                                 withString:@""]);
-    XCTAssertEqual(kShuffleValid,
-                   [shuffler isValidShuffle:@"abc"
-                                   ofString:@""
-                                 withString:@"abc"]);
-
-    XCTAssertEqual(kShuffleNotValid,
-                   [shuffler isValidShuffle:@"abc"
+    XCTAssertTrue([shuffler isValidShuffle:@""
+                                  ofString:@""
+                                withString:@""]);
+    XCTAssertTrue([shuffler isValidShuffle:@"abc"
+                                  ofString:@"abc"
+                                withString:@""]);
+    XCTAssertTrue([shuffler isValidShuffle:@"abc"
+                                  ofString:@""
+                                withString:@"abc"]);
+    
+    XCTAssertFalse([shuffler isValidShuffle:@"abc"
                                    ofString:@""
                                  withString:@""]);
 }
+
+/*
+- (void)testIsValidShuffle {
+    BSShuffler *shuffler = [[BSShuffler alloc] init];
+    
+    XCTAssertTrue([shuffler isValidShuffle:@"ab"
+                                   ofString:@"a"
+                                 withString:@"b"]);
+
+    XCTAssertTrue([shuffler isValidShuffle:@"ab"
+                                  ofString:@"a"
+                                withString:@"b"]);
+
+    XCTAssertTrue([shuffler isValidShuffle:@"dabecf"
+                                  ofString:@"abc"
+                                withString:@"def"]);
+
+    XCTAssertTrue([shuffler isValidShuffle:@"abcdefghijkl"
+                                  ofString:@"abcghi"
+                                withString:@"defjkl"]);
+
+    XCTAssertFalse([shuffler isValidShuffle:@"abcdefghijkl"
+                                   ofString:@"abchgi"
+                                 withString:@"defjkl"]);
+}
+ */
 
 @end
