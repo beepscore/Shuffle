@@ -205,4 +205,32 @@
                                 withString:@"b"]);
 }
 
+- (void)testIsValidShuffleSourceStringNil {
+    BSShuffler *shuffler = [[BSShuffler alloc] init];
+    
+    XCTAssertTrue([shuffler isValidShuffle:@"abc"
+                                  ofString:@"abc"
+                                withString:nil]);
+    
+    XCTAssertTrue([shuffler isValidShuffle:@"abc"
+                                  ofString:nil
+                                withString:@"abc"]);
+
+    XCTAssertFalse([shuffler isValidShuffle:@"abc"
+                                   ofString:nil
+                                 withString:nil]);
+
+    XCTAssertFalse([shuffler isValidShuffle:@"abc"
+                                   ofString:nil
+                                 withString:@"ab"]);
+
+    XCTAssertFalse([shuffler isValidShuffle:@"a"
+                                   ofString:nil
+                                 withString:@"ab"]);
+
+    XCTAssertFalse([shuffler isValidShuffle:@"ab"
+                                   ofString:nil
+                                 withString:@"abc"]);
+}
+
 @end
