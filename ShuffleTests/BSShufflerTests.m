@@ -77,22 +77,22 @@
 - (void)testIsValidShuffleForEdgeCasesShuffledStringNil {
     BSShuffler *shuffler = [[BSShuffler alloc] init];
     
-    XCTAssertEqual(kShuffleValid,
+    XCTAssertEqual(BSShuffleValidityCodeValid,
                    [shuffler isValidShuffleForEdgeCases:nil
                                                 string0:nil
                                                 string1:nil]);
     
-    XCTAssertEqual(kShuffleNotValid,
+    XCTAssertEqual(BSShuffleValidityCodeNotValid,
                    [shuffler isValidShuffleForEdgeCases:nil
                                                 string0:@"a"
                                                 string1:nil]);
     
-    XCTAssertEqual(kShuffleNotValid,
+    XCTAssertEqual(BSShuffleValidityCodeNotValid,
                    [shuffler isValidShuffleForEdgeCases:nil
                                                 string0:nil
                                                 string1:@"b"]);
     
-    XCTAssertEqual(kShuffleNotValid,
+    XCTAssertEqual(BSShuffleValidityCodeNotValid,
                    [shuffler isValidShuffleForEdgeCases:nil
                                                 string0:@"a"
                                                 string1:@"b"]);
@@ -101,22 +101,22 @@
 - (void)testIsValidShuffleForEdgeCasesShuffledStringEmpty {
     BSShuffler *shuffler = [[BSShuffler alloc] init];
     
-    XCTAssertEqual(kShuffleNotValid,
+    XCTAssertEqual(BSShuffleValidityCodeNotValid,
                    [shuffler isValidShuffleForEdgeCases:@""
                                                 string0:nil
                                                 string1:nil]);
 
-    XCTAssertEqual(kShuffleNotValid,
+    XCTAssertEqual(BSShuffleValidityCodeNotValid,
                    [shuffler isValidShuffleForEdgeCases:@""
                                                 string0:@"a"
                                                 string1:nil]);
 
-    XCTAssertEqual(kShuffleNotValid,
+    XCTAssertEqual(BSShuffleValidityCodeNotValid,
                    [shuffler isValidShuffleForEdgeCases:@""
                                                 string0:nil
                                                 string1:@"xy"]);
 
-    XCTAssertEqual(kShuffleNotValid,
+    XCTAssertEqual(BSShuffleValidityCodeNotValid,
                    [shuffler isValidShuffleForEdgeCases:@""
                                                 string0:@"a"
                                                 string1:@"b"]);
@@ -125,30 +125,30 @@
 - (void)testIsValidShuffleForEdgeCasesSourceStringNil {
     BSShuffler *shuffler = [[BSShuffler alloc] init];
     
-    XCTAssertEqual(kShuffleValid,
+    XCTAssertEqual(BSShuffleValidityCodeValid,
                    [shuffler isValidShuffleForEdgeCases:@"abc"
                                                 string0:@"abc"
                                                 string1:nil]);
-    XCTAssertEqual(kShuffleValid,
+    XCTAssertEqual(BSShuffleValidityCodeValid,
                    [shuffler isValidShuffleForEdgeCases:@"abc"
                                                 string0:nil
                                                 string1:@"abc"]);
 
-    XCTAssertEqual(kShuffleNotValid,
+    XCTAssertEqual(BSShuffleValidityCodeNotValid,
                    [shuffler isValidShuffleForEdgeCases:@"abc"
                                                 string0:nil
                                                 string1:nil]);
 
-    XCTAssertEqual(kShuffleValidityUnknown,
+    XCTAssertEqual(BSShuffleValidityCodeUnknown,
                    [shuffler isValidShuffleForEdgeCases:@"a"
                                                 string0:nil
                                                 string1:@"ab"]);
 
-    XCTAssertEqual(kShuffleValidityUnknown,
+    XCTAssertEqual(BSShuffleValidityCodeUnknown,
                    [shuffler isValidShuffleForEdgeCases:@"ab"
                                                 string0:nil
                                                 string1:@"abc"]);
-    XCTAssertEqual(kShuffleValidityUnknown,
+    XCTAssertEqual(BSShuffleValidityCodeUnknown,
                    [shuffler isValidShuffleForEdgeCases:@"abc"
                                                 string0:nil
                                                 string1:@"ab"]);
@@ -157,19 +157,19 @@
 - (void)testIsValidShuffleForEdgeCasesSourceStringEmpty {
     BSShuffler *shuffler = [[BSShuffler alloc] init];
     
-    XCTAssertEqual(kShuffleValid,
+    XCTAssertEqual(BSShuffleValidityCodeValid,
                    [shuffler isValidShuffleForEdgeCases:@""
                                                 string0:@""
                                                 string1:@""]);
-    XCTAssertEqual(kShuffleValid,
+    XCTAssertEqual(BSShuffleValidityCodeValid,
                    [shuffler isValidShuffleForEdgeCases:@"abc"
                                                 string0:@"abc"
                                                 string1:@""]);
-    XCTAssertEqual(kShuffleValid,
+    XCTAssertEqual(BSShuffleValidityCodeValid,
                    [shuffler isValidShuffleForEdgeCases:@"abc"
                                                 string0:@""
                                                 string1:@"abc"]);
-    XCTAssertEqual(kShuffleNotValid,
+    XCTAssertEqual(BSShuffleValidityCodeNotValid,
                    [shuffler isValidShuffleForEdgeCases:@"abc"
                                                 string0:@""
                                                 string1:@""]);

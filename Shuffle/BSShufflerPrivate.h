@@ -19,9 +19,9 @@
 @interface BSShuffler()
 
 typedef enum {
-    kShuffleValidityUnknown = -1,
-    kShuffleNotValid = 0,
-    kShuffleValid = 1,
+    BSShuffleValidityCodeUnknown = -1,
+    BSShuffleValidityCodeNotValid = 0,
+    BSShuffleValidityCodeValid = 1,
 } BSShuffleValidityCode;
 
 /** Contains values of nodes visited.

@@ -58,36 +58,36 @@
 
     if (!shuffledString) {
         if (!string0 && !string1) {
-            return kShuffleValid;
+            return BSShuffleValidityCodeValid;
         } else {
-            return kShuffleNotValid;
+            return BSShuffleValidityCodeNotValid;
         }
     }
 
     if ([@"" isEqualToString:shuffledString]) {
         if ([@"" isEqualToString:string0] && [@"" isEqualToString:string1]) {
-            return kShuffleValid;
+            return BSShuffleValidityCodeValid;
         } else {
-            return kShuffleNotValid;
+            return BSShuffleValidityCodeNotValid;
         }
     }
 
     if (shuffledString
         && [BSStringUtils isStringNilOrEmpty:string0]
         && [BSStringUtils isStringNilOrEmpty:string1]) {
-        return kShuffleNotValid;
+        return BSShuffleValidityCodeNotValid;
     }
     
     if ([BSStringUtils isStringNilOrEmpty:string0]
         && [shuffledString isEqualToString:string1]) {
-        return kShuffleValid;
+        return BSShuffleValidityCodeValid;
     }
     
     if ([BSStringUtils isStringNilOrEmpty:string1]
         && [shuffledString isEqualToString:string0]) {
-        return kShuffleValid;
+        return BSShuffleValidityCodeValid;
     }
-    return kShuffleValidityUnknown;
+    return BSShuffleValidityCodeUnknown;
 }
 
 - (BOOL)isLeafNode:(BSNode *)node
@@ -146,10 +146,10 @@
     BSShuffleValidityCode shuffleValidityCode = [self isValidShuffleForEdgeCases:shuffledString
                                                                          string0:string0
                                                                          string1:string1];
-    if (shuffleValidityCode == kShuffleNotValid) {
+    if (shuffleValidityCode == BSShuffleValidityCodeNotValid) {
         return NO;
     }
-    if (shuffleValidityCode == kShuffleValid) {
+    if (shuffleValidityCode == BSShuffleValidityCodeValid) {
         return YES;
     }
     // else isValidShuffleForEdgeCases:string0:string1 could not determine if shuffle is valid
