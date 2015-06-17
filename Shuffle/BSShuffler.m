@@ -51,9 +51,9 @@
 
 //==========================================================================
 
-- (ShuffleValidityCode)isValidShuffleForEdgeCases:(NSString *)shuffledString
-                           string0:(NSString *)string0
-                           string1:(NSString *)string1 {
+- (BSShuffleValidityCode)isValidShuffleForEdgeCases:(NSString *)shuffledString
+                                            string0:(NSString *)string0
+                                            string1:(NSString *)string1 {
 
     if (!shuffledString) {
         if (!string0 && !string1) {
@@ -142,6 +142,18 @@
               ofString:(NSString *)string0
             withString:(NSString *)string1 {
 
+    BSShuffleValidityCode shuffleValidityCode = [self isValidShuffleForEdgeCases:shuffledString
+                                                                         string0:string0
+                                                                         string1:string1];
+    if (shuffleValidityCode == kShuffleNotValid) {
+        return NO;
+    }
+    if (shuffleValidityCode == kShuffleValid) {
+        return YES;
+    }
+    // else isValidShuffleForEdgeCases:string0:string1 could not determine if shuffle is valid
+
+    // TODO: add implementation for other cases
     return NO;
 }
 

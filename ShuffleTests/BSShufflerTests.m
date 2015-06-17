@@ -167,7 +167,6 @@
 //==========================================================================
 #pragma mark - testIsValidShuffle
 
-/*
 - (void)testIsValidShuffleShuffledStringNil {
     BSShuffler *shuffler = [[BSShuffler alloc] init];
     
@@ -185,6 +184,5 @@
                                    ofString:@"a"
                                  withString:@"b"]);
 }
- */
 
 @end

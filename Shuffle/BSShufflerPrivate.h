@@ -22,7 +22,7 @@ typedef enum {
     kShuffleValidityUnknown = -1,
     kShuffleNotValid = 0,
     kShuffleValid = 1,
-} ShuffleValidityCode;
+} BSShuffleValidityCode;
 
 /** Contains values of nodes visited.
  Useful during development for examining traversal history.
@@ -37,7 +37,7 @@ typedef enum {
 
 /**
  * Checks several edge cases such as arguments null or empty strings
- * Returns ShuffleValidityCode instead of boolean (true, false)
+ * Returns BSShuffleValidityCode instead of boolean (YES, NO)
  * @param shuffledString
  * @param string0
  * @param string1
@@ -45,9 +45,9 @@ typedef enum {
  * return kShuffleNotValid if shuffledString is not a valid shuffle of string0 and string1.
  * return kShuffleValidityUnknown if method can't tell if shuffledString is a valid shuffle of string0 and string1.
  */
-- (ShuffleValidityCode)isValidShuffleForEdgeCases:(NSString *)shuffledString
-                                          string0:(NSString *)string0
-                                          string1:(NSString *)string1;
+- (BSShuffleValidityCode)isValidShuffleForEdgeCases:(NSString *)shuffledString
+                                            string0:(NSString *)string0
+                                            string1:(NSString *)string1;
 
 /**
  *
