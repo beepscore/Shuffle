@@ -165,21 +165,7 @@
     // TODO: Consider create queue class that wraps NSMutableArray to implement strict queue
     NSMutableArray *queue = [NSMutableArray arrayWithArray:@[]];
     
-    // this index value signifies node has no letters from that source
-    // e.g. if node.index0 == -1, node.value contains no letters from string0
-    //const NSInteger INDEX_BEFORE_SOURCE_START = -1;
-    NSInteger INDEX_BEFORE_SOURCE_START = -1;
-    
-    self.nodesSearched = [NSMutableArray arrayWithArray:@[]];
-    
-    // root node has empty value and no letters from either source string
-    BSNode *root = [[BSNode alloc] initWithValue:@""
-                                          index0:INDEX_BEFORE_SOURCE_START
-                                          index1:INDEX_BEFORE_SOURCE_START
-                                            left:nil
-                                           right:nil];
-    // add to end of queue
-    [queue addObject:root];
+    [self addRootNodeToQueue:queue];
     
     while (queue.count > 0) {
         
@@ -219,6 +205,23 @@
     
     // didn't find a solution
     return NO;
+}
+
+- (void)addRootNodeToQueue:(NSMutableArray *)queue {
+    // this index value signifies node has no letters from that source
+    // e.g. if node.index0 == -1, node.value contains no letters from string0
+    const NSInteger INDEX_BEFORE_SOURCE_START = -1;
+    
+    self.nodesSearched = [NSMutableArray arrayWithArray:@[]];
+    
+    // root node has empty value and no letters from either source string
+    BSNode *root = [[BSNode alloc] initWithValue:@""
+                                          index0:INDEX_BEFORE_SOURCE_START
+                                          index1:INDEX_BEFORE_SOURCE_START
+                                            left:nil
+                                           right:nil];
+    // add to end of queue
+    [queue addObject:root];
 }
 
 - (void)addLeftNodeToNode:(BSNode *)node
