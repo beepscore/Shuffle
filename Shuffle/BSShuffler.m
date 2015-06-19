@@ -146,14 +146,21 @@
     BSShuffleValidityCode shuffleValidityCode = [self isValidShuffleForEdgeCases:shuffledString
                                                                          string0:string0
                                                                          string1:string1];
-    if (shuffleValidityCode == BSShuffleValidityCodeNotValid) {
-        return NO;
+    switch (shuffleValidityCode) {
+        case BSShuffleValidityCodeNotValid: {
+            return NO;
+        }
+        case BSShuffleValidityCodeValid: {
+            return YES;
+        }
+        case BSShuffleValidityCodeUnknown: {
+            // edge cases could not determine if shuffle is valid, don't return yet
+            break;
+        }
+        default:
+            break;
     }
-    if (shuffleValidityCode == BSShuffleValidityCodeValid) {
-        return YES;
-    }
-    // else isValidShuffleForEdgeCases:string0:string1 could not determine if shuffle is valid
-    
+
     // TODO: Consider create queue class that wraps NSMutableArray to implement strict queue
     NSMutableArray *queue = [NSMutableArray arrayWithArray:@[]];
     
