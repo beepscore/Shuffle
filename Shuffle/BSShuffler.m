@@ -162,44 +162,40 @@
             break;
     }
 
-    // TODO: Consider create queue class that wraps NSMutableArray to implement strict queue
+    // TODO: Consider create queue class that wraps NSMutableArray
+    // to implement strict fifo queue
     NSMutableArray *queue = [NSMutableArray arrayWithArray:@[]];
     
     [self addRootNodeToQueue:queue];
     
     while (queue.count > 0) {
         
-        // remove from beginning of queue
+        // queue - remove from beginning of array
         BSNode *node = [queue firstObject];
         [queue removeObjectAtIndex:0];
         
         [self.nodesSearched addObject:node.value];
         
         if ([self isLeafNode:node string0:string0 string1:string1]) {
+            // node is a terminal node
             if ([self isASolution:node
                    shuffledString:shuffledString
                          ofString:string0
                        withString:string1]) {
                 return YES;
             } else {
-                // skip to next iteration
+                // skip to next iteration, next node in queue
                 continue;
             }
         }
 
-        NSString *shuffledStringStart = nil;
-        if ([self isNodeValue:node equalToValue:@""]) {
-            shuffledStringStart = @"";
-        } else {
-            shuffledStringStart = [BSStringUtils safeSubstringInclusive:shuffledString
-                                                             startIndex:0
-                                                               endIndex:node.value.length - 1];
-        }
+        NSString *shuffledStringStart = [self shuffledStringStart:shuffledString
+                                                             node:node];
 
         if ([self isNodeValue:node equalToValue:shuffledStringStart]){
-            // candidate is potentially valid
-            [self addLeftNodeToNode:node queue:queue string0:string0];
-            [self addRightNodeToNode:node queue:queue string1:string1];
+            // path to this node is a valid candidate, so add sub-branches
+            [self addLeftNodeToNode:node andQueue:queue string0:string0];
+            [self addRightNodeToNode:node andQueue:queue string1:string1];
         }
     }
     
@@ -220,12 +216,28 @@
                                           index1:INDEX_BEFORE_SOURCE_START
                                             left:nil
                                            right:nil];
-    // add to end of queue
+    // queue, add to end of array
     [queue addObject:root];
 }
 
+/** 
+ * @return start of shuffled string, length equal to node value length
+ */
+- (NSString *)shuffledStringStart:(NSString *)shuffledString
+                             node:(BSNode *)node {
+    NSString *shuffledStart = nil;
+    if ([self isNodeValue:node equalToValue:@""]) {
+        shuffledStart = @"";
+    } else {
+        shuffledStart = [BSStringUtils safeSubstringInclusive:shuffledString
+                                                         startIndex:0
+                                                           endIndex:node.value.length - 1];
+    }
+    return shuffledStart;
+}
+
 - (void)addLeftNodeToNode:(BSNode *)node
-                    queue:(NSMutableArray *)queue
+                 andQueue:(NSMutableArray *)queue
                   string0:(NSString *)string0 {
     // index0 may be < 0, string.length returns NSUInteger so cast
     if (string0
@@ -244,7 +256,7 @@
 }
 
 - (void)addRightNodeToNode:(BSNode *)node
-                     queue:(NSMutableArray *)queue
+                  andQueue:(NSMutableArray *)queue
                    string1:(NSString *)string1 {
     if (string1
         && (node.index1 < (NSInteger)string1.length)) {
