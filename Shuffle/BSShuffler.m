@@ -139,6 +139,7 @@
 }
 
 //==========================================================================
+
 - (BOOL)isValidShuffle:(NSString *)shuffledString
               ofString:(NSString *)string0
             withString:(NSString *)string1 {
@@ -211,40 +212,50 @@
 
         if ([self isNodeValue:node equalToValue:shuffledStringStart]){
             // candidate is potentially valid
-
-            // index0 may be < 0, string.length returns NSUInteger so cast
-            if (string0
-                && (node.index0 < (NSInteger)string0.length)) {
-                NSString *string0AtIndex = [BSStringUtils
-                                            safeSubstringLengthOne:string0
-                                            index:node.index0 + 1];
-                NSString *nodeLeftValue = [node.value stringByAppendingString:string0AtIndex];
-                node.left = [[BSNode alloc] initWithValue:nodeLeftValue
-                                                   index0:node.index0 + 1
-                                                   index1:node.index1
-                                                     left:nil
-                                                    right:nil];
-                [queue addObject:node.left];
-            }
-            
-            if (string1
-                && (node.index1 < (NSInteger)string1.length)) {
-                NSString *string1AtIndex = [BSStringUtils
-                                            safeSubstringLengthOne:string1
-                                            index:node.index1 + 1];
-                NSString *nodeRightValue = [node.value stringByAppendingString:string1AtIndex];
-                node.right = [[BSNode alloc] initWithValue:nodeRightValue
-                                                    index0:node.index0
-                                                    index1:node.index1 + 1
-                                                      left:nil
-                                                     right:nil];
-                [queue addObject:node.right];
-            }
+            [self addLeftNodeToNode:node queue:queue string0:string0];
+            [self addRightNodeToNode:node queue:queue string1:string1];
         }
     }
     
     // didn't find a solution
     return NO;
+}
+
+- (void)addLeftNodeToNode:(BSNode *)node
+                    queue:(NSMutableArray *)queue
+                  string0:(NSString *)string0 {
+    // index0 may be < 0, string.length returns NSUInteger so cast
+    if (string0
+        && (node.index0 < (NSInteger)string0.length)) {
+        NSString *string0AtIndex = [BSStringUtils
+                                    safeSubstringLengthOne:string0
+                                    index:node.index0 + 1];
+        NSString *nodeLeftValue = [node.value stringByAppendingString:string0AtIndex];
+        node.left = [[BSNode alloc] initWithValue:nodeLeftValue
+                                           index0:node.index0 + 1
+                                           index1:node.index1
+                                             left:nil
+                                            right:nil];
+        [queue addObject:node.left];
+    }
+}
+
+- (void)addRightNodeToNode:(BSNode *)node
+                     queue:(NSMutableArray *)queue
+                   string1:(NSString *)string1 {
+    if (string1
+        && (node.index1 < (NSInteger)string1.length)) {
+        NSString *string1AtIndex = [BSStringUtils
+                                    safeSubstringLengthOne:string1
+                                    index:node.index1 + 1];
+        NSString *nodeRightValue = [node.value stringByAppendingString:string1AtIndex];
+        node.right = [[BSNode alloc] initWithValue:nodeRightValue
+                                            index0:node.index0
+                                            index1:node.index1 + 1
+                                              left:nil
+                                             right:nil];
+        [queue addObject:node.right];
+    }
 }
 
 @end
