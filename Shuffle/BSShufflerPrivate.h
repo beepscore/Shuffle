@@ -18,11 +18,11 @@
 
 @interface BSShuffler()
 
-typedef enum {
+typedef NS_ENUM(int, BSShuffleValidityCode) {
     BSShuffleValidityCodeUnknown = -1,
     BSShuffleValidityCodeNotValid = 0,
     BSShuffleValidityCodeValid = 1,
-} BSShuffleValidityCode;
+};
 
 /** Contains values of nodes visited.
  Useful during development for examining traversal history.

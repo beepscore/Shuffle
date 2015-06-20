@@ -21,6 +21,6 @@
                        index0:(NSInteger)index0
                        index1:(NSInteger)index1
                          left:(BSNode *)left
-                        right:(BSNode *)right;
+                        right:(BSNode *)right NS_DESIGNATED_INITIALIZER;
 
 @end
