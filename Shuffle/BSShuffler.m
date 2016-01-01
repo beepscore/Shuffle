@@ -13,7 +13,7 @@
 
 @implementation BSShuffler
 
-- (BOOL)isNodeValue:(BSNode *)node equalToValue:(NSString *)value {
++ (BOOL)isNodeValue:(BSNode *)node equalToValue:(NSString *)value {
 
     if (!value && !node.value) {
         return true;
@@ -28,7 +28,7 @@
     return false;
 }
 
-- (BOOL)isNode:(BSNode *)node
++ (BOOL)isNode:(BSNode *)node
          index:(NSInteger)index
  atEndOfString:(NSString *)string {
     
@@ -42,17 +42,17 @@
     }
 }
 
-- (BOOL)isNode:(BSNode *)node index0AtEndOfString:(NSString *)string {
++ (BOOL)isNode:(BSNode *)node index0AtEndOfString:(NSString *)string {
     return [self isNode:node index:node.index0 atEndOfString:string];
 }
 
-- (BOOL)isNode:(BSNode *)node index1AtEndOfString:(NSString *)string {
++ (BOOL)isNode:(BSNode *)node index1AtEndOfString:(NSString *)string {
     return [self isNode:node index:node.index1 atEndOfString:string];
 }
 
 //==========================================================================
 
-- (BSShuffleValidityCode)isValidShuffleForEdgeCases:(NSString *)shuffledString
++ (BSShuffleValidityCode)isValidShuffleForEdgeCases:(NSString *)shuffledString
                                             string0:(NSString *)string0
                                             string1:(NSString *)string1 {
 
@@ -90,7 +90,7 @@
     return BSShuffleValidityCodeUnknown;
 }
 
-- (BOOL)isLeafNode:(BSNode *)node
++ (BOOL)isLeafNode:(BSNode *)node
            string0:(NSString *)string0
            string1:(NSString *)string1 {
 
@@ -117,21 +117,21 @@
 
     // string0 and string1 are non-empty
     
-    if ([self isNode:node index0AtEndOfString:string0]
-        && [self isNode:node index1AtEndOfString:string1]) {
+    if ([BSShuffler isNode:node index0AtEndOfString:string0]
+        && [BSShuffler isNode:node index1AtEndOfString:string1]) {
             return YES;
         } else {
             return NO;
         }
 }
 
-- (BOOL)isASolution:(BSNode *)node
++ (BOOL)isASolution:(BSNode *)node
      shuffledString:(NSString *)shuffledString
            ofString:(NSString *)string0
          withString:(NSString *)string1 {
 
-    if ([self isLeafNode:node string0:string0 string1:string1]
-        && [self isNodeValue:node equalToValue:shuffledString]) {
+    if ([BSShuffler isLeafNode:node string0:string0 string1:string1]
+        && [BSShuffler isNodeValue:node equalToValue:shuffledString]) {
         return YES;
     } else {
         return NO;
@@ -144,7 +144,7 @@
               ofString:(NSString *)string0
             withString:(NSString *)string1 {
     
-    BSShuffleValidityCode shuffleValidityCode = [self isValidShuffleForEdgeCases:shuffledString
+    BSShuffleValidityCode shuffleValidityCode = [BSShuffler isValidShuffleForEdgeCases:shuffledString
                                                                          string0:string0
                                                                          string1:string1];
     switch (shuffleValidityCode) {
@@ -176,9 +176,9 @@
         
         [self.nodesSearched addObject:node.value];
         
-        if ([self isLeafNode:node string0:string0 string1:string1]) {
+        if ([BSShuffler isLeafNode:node string0:string0 string1:string1]) {
             // node is a terminal node
-            if ([self isASolution:node
+            if ([BSShuffler isASolution:node
                    shuffledString:shuffledString
                          ofString:string0
                        withString:string1]) {
@@ -189,13 +189,13 @@
             }
         }
 
-        NSString *shuffledStringStart = [self shuffledStringStart:shuffledString
+        NSString *shuffledStringStart = [BSShuffler shuffledStringStart:shuffledString
                                                              node:node];
 
-        if ([self isNodeValue:node equalToValue:shuffledStringStart]){
+        if ([BSShuffler isNodeValue:node equalToValue:shuffledStringStart]){
             // path to this node is a valid candidate, so add sub-branches
-            [self addLeftNodeToNode:node andQueue:queue string0:string0];
-            [self addRightNodeToNode:node andQueue:queue string1:string1];
+            [BSShuffler addLeftNodeToNode:node andQueue:queue string0:string0];
+            [BSShuffler addRightNodeToNode:node andQueue:queue string1:string1];
         }
     }
     
@@ -223,10 +223,10 @@
 /** 
  * @return start of shuffled string, length equal to node value length
  */
-- (NSString *)shuffledStringStart:(NSString *)shuffledString
++ (NSString *)shuffledStringStart:(NSString *)shuffledString
                              node:(BSNode *)node {
     NSString *shuffledStart = nil;
-    if ([self isNodeValue:node equalToValue:@""]) {
+    if ([BSShuffler isNodeValue:node equalToValue:@""]) {
         shuffledStart = @"";
     } else {
         shuffledStart = [BSStringUtils safeSubstringInclusive:shuffledString
@@ -236,7 +236,7 @@
     return shuffledStart;
 }
 
-- (void)addLeftNodeToNode:(BSNode *)node
++ (void)addLeftNodeToNode:(BSNode *)node
                  andQueue:(NSMutableArray *)queue
                   string0:(NSString *)string0 {
     // index0 may be < 0, string.length returns NSUInteger so cast
@@ -255,7 +255,7 @@
     }
 }
 
-- (void)addRightNodeToNode:(BSNode *)node
++ (void)addRightNodeToNode:(BSNode *)node
                   andQueue:(NSMutableArray *)queue
                    string1:(NSString *)string1 {
     if (string1

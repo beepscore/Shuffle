@@ -29,11 +29,11 @@ typedef NS_ENUM(int, BSShuffleValidityCode) {
  */
 @property (strong, nonatomic) NSMutableArray *nodesSearched;
 
-- (BOOL)isNodeValue:(BSNode *)node equalToValue:(NSString *)value;
++ (BOOL)isNodeValue:(BSNode *)node equalToValue:(NSString *)value;
 
-- (BOOL)isNode:(BSNode *)node index0AtEndOfString:(NSString *)string;
++ (BOOL)isNode:(BSNode *)node index0AtEndOfString:(NSString *)string;
 
-- (BOOL)isNode:(BSNode *)node index1AtEndOfString:(NSString *)string;
++ (BOOL)isNode:(BSNode *)node index1AtEndOfString:(NSString *)string;
 
 /**
  * Checks several edge cases such as arguments null or empty strings
@@ -45,7 +45,7 @@ typedef NS_ENUM(int, BSShuffleValidityCode) {
  * return kShuffleNotValid if shuffledString is not a valid shuffle of string0 and string1.
  * return kShuffleValidityUnknown if method can't tell if shuffledString is a valid shuffle of string0 and string1.
  */
-- (BSShuffleValidityCode)isValidShuffleForEdgeCases:(NSString *)shuffledString
++ (BSShuffleValidityCode)isValidShuffleForEdgeCases:(NSString *)shuffledString
                                             string0:(NSString *)string0
                                             string1:(NSString *)string1;
 
@@ -56,7 +56,7 @@ typedef NS_ENUM(int, BSShuffleValidityCode) {
  * @param string1 may be nil or empty @"".
  * @return YES if node index0 and index1 are at end of string0 and string1
  */
-- (BOOL)isLeafNode:(BSNode *)node
++ (BOOL)isLeafNode:(BSNode *)node
            string0:(NSString *)string0
            string1:(NSString *)string1;
 
