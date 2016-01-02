@@ -28,6 +28,9 @@
     return false;
 }
 
+//==========================================================================
+#pragma mark - node index methods
+
 + (BOOL)isNode:(BSNode *)node
          index:(NSInteger)index
  atEndOfString:(NSString *)string {
@@ -51,6 +54,7 @@
 }
 
 //==========================================================================
+#pragma mark -
 
 + (BSShuffleValidityCode)isValidShuffleForEdgeCases:(NSString *)shuffledString
                                             string0:(NSString *)string0
@@ -139,6 +143,7 @@
 }
 
 //==========================================================================
+#pragma mark -
 
 - (BOOL)isValidShuffle:(NSString *)shuffledString
               ofString:(NSString *)string0
@@ -202,6 +207,9 @@
     // didn't find a solution
     return NO;
 }
+
+//==========================================================================
+#pragma mark -
 
 - (void)addRootNodeToQueue:(NSMutableArray *)queue {
     // this index value signifies node has no letters from that source
