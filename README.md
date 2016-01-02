@@ -1,10 +1,19 @@
 # Purpose
 Given three strings, write a method to test if shuffledString is a valid "shuffle" of string0 and string1.  
-Port Java "ShuffleAndroid" to Objective-C "Shuffle.app".
+This app started as Java "ShuffleAndroid".
+Then ported to Objective-C "Shuffle.app".
+Then ported to Swift as ShuffleSwift.app".
 
 # References
-ShuffleAndroid by Steve Baker Beepscore LLC  
+
+Java ShuffleAndroid by Steve Baker Beepscore LLC  
 <https://github.com/beepscore/ShuffleAndroid>
+
+Objective C Shuffle by Steve Baker Beepscore LLC  
+<https://github.com/beepscore/Shuffle>
+
+Swift ShuffleSwift by Steve Baker Beepscore LLC  
+<https://github.com/beepscore/ShuffleSwift>
 
 TreeTraverser by Steve Baker Beepscore LLC  
 <https://github.com/beepscore/TreeTraverser>
