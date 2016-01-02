@@ -261,6 +261,10 @@
                                    ofString:@"a"
                                  withString:@"b"]);
 
+    XCTAssertFalse([shuffler isValidShuffle:@"abc"
+                                   ofString:@"a"
+                                 withString:@"b"]);
+
     XCTAssertTrue([shuffler isValidShuffle:@"dabecf"
                                   ofString:@"abc"
                                 withString:@"def"]);
